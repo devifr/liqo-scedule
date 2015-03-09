@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nama: MyString
+  code: MyString
+  alamat: MyText
+  no_telp: MyString
+  pin_bb: MyString
+  facebook: MyString
+  email: MyString
+
+two:
+  nama: MyString
+  code: MyString
+  alamat: MyText
+  no_telp: MyString
+  pin_bb: MyString
+  facebook: MyString
+  email: MyString

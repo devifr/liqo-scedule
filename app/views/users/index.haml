@@ -1,0 +1,33 @@
+.panel.panel-default
+  .panel-heading
+    %h3.panel-title
+  .panel-body
+    = link_to 'New', new_user_path
+    %table.table.table-hover.table-bordered.table-striped
+      %thead
+        %tr
+          %th
+            Code
+          %th
+            Name
+          %th
+            Email
+          %th
+            Phone
+          %th
+            Action
+      %tbody
+        - @users.each do |user|
+          %tr
+            %td 
+              =user.code
+            %td 
+              =user.nama
+            %td 
+              =user.email
+            %td 
+              =user.no_telp
+            %td 
+              = link_to 'Show', user_path(user.id)
+              = link_to 'Edit', edit_user_path(user.id)
+              = link_to 'Destroy', user_path(user.id), method: :delete, data: { confirm: 'Are you sure?' }

@@ -1,0 +1,13 @@
+%ul.nav.navbar-nav
+  %li
+    = link_to 'Dashboard', '#'
+  - if current_admin.present?
+    %li
+      = link_to 'User', '#'
+
+- if current_admin.present?
+  %ul.nav.navbar-nav.navbar-right
+    %li
+      = link_to current_admin.email, edit_admin_registration_path
+    %li.active
+      = link_to 'Logout', destroy_admin_session_path, method: :delete
