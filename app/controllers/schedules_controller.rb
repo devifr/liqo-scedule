@@ -1,5 +1,7 @@
-class SchedulesController < AdminController
+class SchedulesController < ApplicationController
   before_action :set_schedule, only: [:show, :edit, :update, :destroy]
+  before_action :set_select, only: [:edit, :update, :new, :create]
+  before_action :check_authenticate, only: [:edit, :update, :new, :create]
   
   def index
     @schedules = Schedule.all
@@ -48,8 +50,17 @@ class SchedulesController < AdminController
       @schedule = Schedule.find(params[:id])
     end
 
+    def set_select
+      @users = User.all.map{|u| [u.nama, u.id]}
+      @materi_kultums = MateriKultum.all.map{|u| ["#{u.title} (#{u.tipe})", u.id]}
+    end
+
+    def check_authenticate
+      redirect_to root_path unless current_admin
+    end
+
     def schedule_params
-      params.require(:schedule).permit(:nama, :code, :alamat, :no_telp, :pin_bb, :facebook, :email)
+      params.require(:schedule).permit(:date, :mc_id, :place, :kultum_id, :materi_kultum_id, :facebook, :email)
     end
 
 end

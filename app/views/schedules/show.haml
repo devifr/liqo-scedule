@@ -1,0 +1,28 @@
+.container
+  .panel.panel-default
+    .panel-heading
+      %h3.panel-title 
+        Schedule List
+    .panel-body
+      .form-group
+        = label_tag :date
+        .controls 
+          = @schedule.date
+      .form-group
+        = label_tag :place
+        .controls 
+          = @schedule.place
+      .form-group
+        = label_tag :mc_id, 'Pembawa Acara'
+        .controls 
+          = @schedule.mc.nama
+      .form-group
+        = label_tag :kultum_id, 'Pemateri Kultum'
+        .controls 
+          = @schedule.kultum.nama
+      .form-group
+        = label_tag :materi_kultum_id, 'Materi Kultum'
+        .controls 
+          = "#{@schedule.materi_kultum.title} (#{@schedule.materi_kultum.tipe})"
+      .form-group
+        = link_to 'Back', schedules_path, class: 'btn btn-default'

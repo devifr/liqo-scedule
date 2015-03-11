@@ -1,32 +1,32 @@
-.panel.panel-default
-  .panel-heading
-    %h3.panel-title
-  .panel-body
-    = link_to 'New', new_user_path
-    %table.table.table-hover.table-bordered.table-striped
-      %thead
-        %tr
-          %th
-            Code
-          %th
-            Name
-          %th
-            Email
-          %th
-            Phone
-          %th
-            Action
-      %tbody
-        - @users.each do |user|
+.container
+  .panel.panel-default
+    .panel-heading
+      %h3.panel-title 
+        Schedule List
+    .panel-body
+      = link_to 'New', new_schedule_path, class: 'btn btn-default'
+      %table.table.table-hover.table-bordered.table-striped
+        %thead
           %tr
-            %td 
-              =user.code
-            %td 
-              =user.nama
-            %td 
-              =user.email
-            %td 
-              =user.no_telp
-            %td 
-              = link_to 'Edit', edit_user_path(user.id)
-              = link_to 'Destroy', user_path(user.id), method: :delete, data: { confirm: 'Are you sure?' }
+            %th
+              Date
+            %th
+              MC
+            %th
+              Kultum
+            %th
+              Action
+        %tbody
+          - @schedules.each do |schedule|
+            %tr
+              %td 
+                = schedule.date
+              %td 
+                = schedule.mc.nama
+              %td 
+                = schedule.kultum.nama
+              %td 
+                = link_to 'Lihat Detail', schedule_path(schedule.id)
+                - if current_admin
+                  = link_to 'Edit', edit_schedule_path(schedule.id)
+                  = link_to 'Destroy', schedule_path(schedule.id), method: :delete, data: { confirm: 'Are you sure?' }

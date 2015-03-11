@@ -1,36 +1,36 @@
-= form_failure_message @user
-- url_path = @user.new_record? ? users_path : user_path
-- method = @user.new_record? ? "post" : "put"
-= form_for @user, url: url_path, html: { role: 'form', method: method } do |f|
+= form_failure_message @schedule
+- url_path = @schedule.new_record? ? schedules_path : schedule_path
+- method = @schedule.new_record? ? "post" : "put"
+= form_for @schedule, url: url_path, html: { role: 'form', method: method } do |f|
 
   .form-group
-    = f.label :nama
-    .controls 
-      = f.text_field :nama, placeholder: 'Nama', class: 'form-control'
+    = f.label :date
+    #datetimepicker1.input-group.date
+      = f.text_field :date, {class: 'form-control'}
+      %span.input-group-addon
+        %span.glyphicon.glyphicon-calendar
+      
   .form-group
-    = f.label :code
+    = f.label :place
     .controls 
-      = f.text_field :code, placeholder: 'AFF', class: 'form-control'
+      = f.text_area :place, class: 'form-control'
   .form-group
-    = f.label :alamat
+    = f.label :mc_id
     .controls 
-      = f.text_area :alamat, class: 'form-control'
+      = f.select :mc_id, options_for_select(@users, @schedule ? @schedule.mc_id : ''), {class: 'form-control'}
   .form-group
-    = f.label :no_telp
+    = f.label :kultum_id
     .controls 
-      = f.text_field :no_telp, placeholder: '082312316', class: 'form-control'
+      = f.select :kultum_id, options_for_select(@users, @schedule ? @schedule.kultum_id : ''), {class: 'form-control'}
   .form-group
-    = f.label :pin_bb
+    = f.label :materi_kultum_id
     .controls 
-      = f.text_field :pin_bb, placeholder: 'A1BCA1', class: 'form-control'
-  .form-group
-    = f.label :facebook
-    .controls 
-      = f.text_field :facebook, placeholder: 'http://facebook/user_name', class: 'form-control'
-  .form-group
-    = f.label :email
-    .controls 
-      = f.text_field :email, placeholder: 'nama@mail.com', class: 'form-control'
+      = f.select :materi_kultum_id, options_for_select(@materi_kultums, @schedule ? @schedule.materi_kultum_id : ''), {class: 'form-control'}
   .form-group
     = f.submit 'Save', class: 'btn btn-primary'
-    = link_to 'Back', users_path, class: 'btn btn-default'
+    = link_to 'Back', schedules_path, class: 'btn btn-default'
+
+:javascript
+  $(function () {
+  $('#datetimepicker1').datetimepicker();
+  });

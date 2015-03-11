@@ -3,7 +3,11 @@
     = link_to 'Dashboard', '#'
   - if current_admin.present?
     %li
-      = link_to 'User', '#'
+      = link_to 'Anggota', users_path
+    %li
+      = link_to 'Materi Kultum', materi_kultums_path
+    %li
+      = link_to 'Schedule', schedules_path
 
 - if current_admin.present?
   %ul.nav.navbar-nav.navbar-right
