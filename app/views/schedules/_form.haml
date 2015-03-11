@@ -1,0 +1,36 @@
+= form_failure_message @user
+- url_path = @user.new_record? ? users_path : user_path
+- method = @user.new_record? ? "post" : "put"
+= form_for @user, url: url_path, html: { role: 'form', method: method } do |f|
+
+  .form-group
+    = f.label :nama
+    .controls 
+      = f.text_field :nama, placeholder: 'Nama', class: 'form-control'
+  .form-group
+    = f.label :code
+    .controls 
+      = f.text_field :code, placeholder: 'AFF', class: 'form-control'
+  .form-group
+    = f.label :alamat
+    .controls 
+      = f.text_area :alamat, class: 'form-control'
+  .form-group
+    = f.label :no_telp
+    .controls 
+      = f.text_field :no_telp, placeholder: '082312316', class: 'form-control'
+  .form-group
+    = f.label :pin_bb
+    .controls 
+      = f.text_field :pin_bb, placeholder: 'A1BCA1', class: 'form-control'
+  .form-group
+    = f.label :facebook
+    .controls 
+      = f.text_field :facebook, placeholder: 'http://facebook/user_name', class: 'form-control'
+  .form-group
+    = f.label :email
+    .controls 
+      = f.text_field :email, placeholder: 'nama@mail.com', class: 'form-control'
+  .form-group
+    = f.submit 'Save', class: 'btn btn-primary'
+    = link_to 'Back', users_path, class: 'btn btn-default'

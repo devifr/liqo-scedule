@@ -1,0 +1,24 @@
+.panel.panel-default
+  .panel-heading
+    %h3.panel-title
+  .panel-body
+    = link_to 'New', new_materi_kultum_path
+    %table.table.table-hover.table-bordered.table-striped
+      %thead
+        %tr
+          %th
+            Tipe
+          %th
+            Judul
+          %th
+            Action
+      %tbody
+        - @materi_kultums.each do |materi_kultum|
+          %tr
+            %td 
+              =materi_kultum.tipe
+            %td 
+              =materi_kultum.title
+            %td 
+              = link_to 'Edit', edit_materi_kultum_path(materi_kultum.id)
+              = link_to 'Destroy', materi_kultum_path(materi_kultum.id), method: :delete, data: { confirm: 'Are you sure?' }

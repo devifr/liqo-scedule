@@ -1,0 +1,16 @@
+= form_failure_message @materi_kultum
+- url_path = @materi_kultum.new_record? ? materi_kultums_path : materi_kultum_path
+- method = @materi_kultum.new_record? ? "post" : "put"
+= form_for @materi_kultum, url: url_path, html: { role: 'form', method: method } do |f|
+
+  .form-group
+    = f.label :tipe
+    .controls 
+      = f.text_field :tipe, placeholder: 'Type', class: 'form-control'
+  .form-group
+    = f.label :title, 'Judul'
+    .controls 
+      = f.text_field :title, placeholder: 'Judul Materi', class: 'form-control'
+  .form-group
+    = f.submit 'Save', class: 'btn btn-primary'
+    = link_to 'Back', materi_kultums_path, class: 'btn btn-default'
