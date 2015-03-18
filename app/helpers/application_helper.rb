@@ -43,4 +43,29 @@ module ApplicationHelper
 
     html.html_safe
   end
+
+  def secure_date(value)
+    datetime = value
+    if [String, Fixnum, Bignum].include?(value.class) && value.to_i > 100000000
+      datetime = Time.at(value.to_i)
+    end
+    return datetime
+  end
+
+  def timepicker_format(value)
+    begin
+      datetime = secure_date(value).utc
+    rescue
+      return value
+    end
+
+    return "" unless datetime
+    begin
+      current_time = datetime.strftime('%Y-%m-%d %H:%M')
+    rescue
+      current_time = Time.parse(value).utc.strftime('%Y-%m-%d %H:%M') rescue nil
+    end
+    current_time
+
+  end
 end

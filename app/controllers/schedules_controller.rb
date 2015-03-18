@@ -53,6 +53,7 @@ class SchedulesController < ApplicationController
     def set_select
       @users = User.all.map{|u| [u.nama, u.id]}
       @materi_kultums = MateriKultum.all.map{|u| ["#{u.title} (#{u.tipe})", u.id]}
+      @materi_talaqis = MateriTalaqi.all.map{|u| ["#{u.title} (#{u.tipe})", u.id]}
     end
 
     def check_authenticate
@@ -60,7 +61,7 @@ class SchedulesController < ApplicationController
     end
 
     def schedule_params
-      params.require(:schedule).permit(:date, :mc_id, :place, :kultum_id, :materi_kultum_id, :facebook, :email)
+      params.require(:schedule).permit(:date, :mc_id, :place, :kultum_id, :materi_kultum_id, :materi_talaqi_id, :talaqi_id)
     end
 
 end

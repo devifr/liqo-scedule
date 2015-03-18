@@ -1,0 +1,26 @@
+.container
+  .panel.panel-default
+    .panel-heading
+      %h3.panel-title
+        Materi Talaqi
+    .panel-body
+      = link_to 'New', new_materi_talaqi_path, class: 'btn btn-default'
+      %table.table.table-hover.table-bordered.table-striped
+        %thead
+          %tr
+            %th
+              Tipe
+            %th
+              Judul
+            %th
+              Action
+        %tbody
+          - @materi_talaqis.each do |materi_talaqi|
+            %tr
+              %td 
+                =materi_talaqi.tipe
+              %td 
+                =materi_talaqi.title
+              %td 
+                = link_to 'Edit', edit_materi_talaqi_path(materi_talaqi.id)
+                = link_to 'Destroy', materi_talaqi_path(materi_talaqi.id), method: :delete, data: { confirm: 'Are you sure?' }

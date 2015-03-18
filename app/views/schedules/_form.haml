@@ -6,7 +6,8 @@
   .form-group
     = f.label :date
     #datetimepicker1.input-group.date
-      = f.text_field :date, {class: 'form-control'}
+      - date_schedule = @schedule ? (@schedule.date != 0 && @schedule.date) ? @schedule.date : '' : ''
+      = f.text_field :date, {class: 'form-control', value: date_schedule}
       %span.input-group-addon
         %span.glyphicon.glyphicon-calendar
       
@@ -22,10 +23,18 @@
     = f.label :kultum_id
     .controls 
       = f.select :kultum_id, options_for_select(@users, @schedule ? @schedule.kultum_id : ''), {class: 'form-control'}
+    .form-group
+    = f.label :talaqi_id
+    .controls 
+      = f.select :talaqi_id, options_for_select(@users, @schedule ? @schedule.talaqi_id : ''), {class: 'form-control'}
   .form-group
     = f.label :materi_kultum_id
     .controls 
       = f.select :materi_kultum_id, options_for_select(@materi_kultums, @schedule ? @schedule.materi_kultum_id : ''), {class: 'form-control'}
+  .form-group
+    = f.label :materi_talaqi_id
+    .controls 
+      = f.select :materi_talaqi_id, options_for_select(@materi_talaqis, @schedule ? @schedule.materi_talaqi_id : ''), {class: 'form-control'}
   .form-group
     = f.submit 'Save', class: 'btn btn-primary'
     = link_to 'Back', schedules_path, class: 'btn btn-default'
