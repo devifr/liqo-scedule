@@ -25,4 +25,16 @@
         .controls 
           = "#{@schedule.materi_kultum.title} (#{@schedule.materi_kultum.tipe})"
       .form-group
+        = label_tag :talaqi_id, 'Talaqi'
+        .controls 
+          = @schedule.talaqi.nama
+      .form-group
+        = label_tag :materi_talaqi_id, 'Materi Talaqi'
+        .controls 
+          = "#{@schedule.materi_talaqi.title} (#{@schedule.materi_talaqi.tipe})"
+      .form-group
+        = label_tag :doa_id, 'Pemimpin Doa'
+        .controls 
+          = @schedule.doa.nama
+      .form-group
         = link_to 'Back', schedules_path, class: 'btn btn-default'

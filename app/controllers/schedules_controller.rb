@@ -61,7 +61,7 @@ class SchedulesController < ApplicationController
     end
 
     def schedule_params
-      params.require(:schedule).permit(:date, :mc_id, :place, :kultum_id, :materi_kultum_id, :materi_talaqi_id, :talaqi_id)
+      params.require(:schedule).permit(:date, :mc_id, :place, :kultum_id, :materi_kultum_id, :materi_talaqi_id, :talaqi_id, :doa_id)
     end
 
 end

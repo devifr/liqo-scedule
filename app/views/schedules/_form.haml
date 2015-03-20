@@ -27,6 +27,10 @@
     = f.label :talaqi_id
     .controls 
       = f.select :talaqi_id, options_for_select(@users, @schedule ? @schedule.talaqi_id : ''), {class: 'form-control'}
+    .form-group
+    = f.label :doa_id
+    .controls 
+      = f.select :doa_id, options_for_select(@users, @schedule ? @schedule.doa_id : ''), {class: 'form-control'}
   .form-group
     = f.label :materi_kultum_id
     .controls 
